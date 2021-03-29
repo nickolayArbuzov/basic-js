@@ -1,17 +1,13 @@
 module.exports = function repeater(str, options) {
-    /*
-    'repeatTimes' in options 
-    'separator' in options
-    'addition' in options 
-    'additionRepeatTimes' in options
-    'additionSeparator' in options
-    */
+    let string = '';
+    
     for (let i=0; i<options.repeatTimes; i++){
+        string += str;
         for (let j=0; j<options.additionRepeatTimes; j++){
-            'addition' in options && (str += options.addition);
-            'additionSeparator' in options && (str += options.addition);
+            'addition' in options && (string += options.addition);
+            'additionSeparator' in options && (string += options.addition);
         }
-        'separator' in options ? str += options.separator : str += '+';
+        if(i < options.repeatTimes-1) 'separator' in options ? string += options.separator : string += '+';
     }
-    return str;
+    return string;
 };
